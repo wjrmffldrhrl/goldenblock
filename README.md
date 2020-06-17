@@ -22,3 +22,6 @@ Windows에서도 Git을 사용하는 또 다른 방법으로 'GitHub Desktop’�
 1. `git add .`
 2. `git commit -m "commit"`
 3. `git push origin master`
+
+## 원격 레포지터리에 있는 내용을 가져오는법 (pull)
+1. `git pull origin master`
