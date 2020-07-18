@@ -24,3 +24,6 @@ Docker를 이용해 개발 환경과 서비스 환경을 통일시킨다.
  토큰 거래 환경을 구성하여 제휴 제품 및 서비스 구매에 활용한다.  
  그리고 학생의 판단에 따라 일부 토큰은 기부될 수 있다.  
  누적된 토큰은 참여 학생들의 역량지표로 사용된다.
+
+## Flowchart
+![flowchart](https://github.com/wjrmffldrhrl/goldenblcok/blob/master/golden%20block%20flowchart%20(1).png?raw=true)
