@@ -27,3 +27,6 @@ Docker를 이용해 개발 환경과 서비스 환경을 통일시킨다.
 
 ## Flowchart
 ![flowchart](https://github.com/wjrmffldrhrl/goldenblcok/blob/master/golden%20block%20flowchart%20(1).png?raw=true)
+
+## 구조
+![structure](https://raw.githubusercontent.com/wjrmffldrhrl/goldenblcok/master/golden%20block%20structure.png)
