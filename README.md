@@ -1,4 +1,4 @@
-# Golden Blcok
+# Golden Block
 
 ## 배경
 COVID-19 사태로 인해 에듀테크는 한국판 뉴딜정책에 포함될 가능성이 큰 산업으로 손꼽힌다.  
