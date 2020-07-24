@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:8.0
+#    build:
+#      context: .
+#      dockerfile: ./mysql/Dockerfile
+    container_name: goldenblock_db
+
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=true
+    volumes:
+      - ./mysql:/var/lib/mysql
