@@ -8,7 +8,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "password"
     volumes:                                                                                                              
-      - ../mysql:/var/lib/mysql
+      - ${pwd}/mysql:/var/lib/mysql
 
     command:
       - --character-set-server=utf8mb4
