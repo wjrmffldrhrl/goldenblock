@@ -2,7 +2,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://ec2-13-59-152-183.us-east-2.compute.amazonaws.com:3306/goldenblock
-    username: goldenblock
+    username: root
     password: goldenblock
 
   jpa:
