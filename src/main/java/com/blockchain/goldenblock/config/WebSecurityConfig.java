@@ -16,25 +16,26 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 
-import lombok.RequiredArgsConstructor;
-
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    
-    private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
-    private final UserDetailsService jwtUserDetailsService;
-    private final JwtRequestFilter jwtRequestFilter;
+    @Autowired
+    private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+
+    @Autowired
+    private UserDetailsService jwtUserDetailsService;
+
+    @Autowired
+    private JwtRequestFilter jwtRequestFilter;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         // configure AuthenticationManager so that it knows from where to load
         // user for matching credentials
         // Use BCryptPasswordEncoder
-        auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder()); 
-    }
+        auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
+}
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -52,14 +53,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // For CORS error
         httpSecurity.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
         // We don't need CSRF for this example
-        httpSecurity.csrf().disable() // API server이므로 CSRF 필요 없음
+        httpSecurity.csrf().disable()
             // dont authenticate this particular request
-            .authorizeRequests().antMatchers("/authenticate").permitAll()
+            .authorizeRequests().antMatchers("/authenticate").permitAll().
             // all other requests need to be authenticated
-            .anyRequest().authenticated().and()
+                anyRequest().authenticated().and().
             
-            .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS); // JWT로 제어하므로 세션이 필요 없다
+            // stateless session exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
+                exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         // Add a filter to validate the tokens with every request
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
