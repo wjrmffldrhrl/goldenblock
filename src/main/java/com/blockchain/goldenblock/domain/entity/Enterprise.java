@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
+
 @Entity
 @Getter
 @Setter
@@ -34,4 +35,5 @@ public class Enterprise {
     String companyNumber;
 
     String password;
+
 }
