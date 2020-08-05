@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import java.util.ArrayList;
 
 import com.blockchain.goldenblock.domain.entity.Student;
+import com.blockchain.goldenblock.domain.model.StudentDetails;
 import com.blockchain.goldenblock.domain.repository.StudentRepository;
 
 import org.springframework.security.core.userdetails.User;
@@ -28,12 +29,17 @@ public class JwtUserDetailsService implements UserDetailsService {
 
         Student student = studentRepository.findByName(name);
 
-
-        if ("user_id".equals(name)) {
-            return new User("user_id", "$2a$10$m/enYHaLsCwH2dKMUAtQp.ksGOA6lq7Fd2pnMb4L.yT4GyeAPRPyS",
-                new ArrayList<>());
-        } else {
+        if(student == null){
             throw new UsernameNotFoundException("User not found with username: " + name);
+        } else {
+            return new StudentDetails(student);
         }
+
+        // if ("user_id".equals(name)) {
+        //     return new User("user_id", "$2a$10$m/enYHaLsCwH2dKMUAtQp.ksGOA6lq7Fd2pnMb4L.yT4GyeAPRPyS",
+        //         new ArrayList<>());
+        // } else {
+        //     throw new UsernameNotFoundException("User not found with username: " + name);
+        // }
     }
 }
