@@ -1,24 +1,14 @@
 spring:
-datasource:
-driver-class-name: com.mysql.cj.jdbc.Driver
-url: jdbc:mysql://localhost:3306/board?serverTimezone=UTC&characterEncoding=UTF-8
-username: root
-password: 1234
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://ec2-13-59-152-183.us-east-2.compute.amazonaws.com:3306/goldenblock
+    username: goldenblock
+    password: goldenblock
 
-jpa:
-database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-open-in-view: false
-show-sql: true
-hibernate:
-format_sql: true
-ddl-auto: create
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      format_sql: true
+      ddl-auto: update
 
-logging:
-level:
-org:
-hibernate:
-SQL: DEBUG
-type:
-descriptor:
-sql:
-BasicBinder: TRACE
