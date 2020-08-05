@@ -1,23 +1,36 @@
 package com.blockchain.goldenblock.domain.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Getter @Setter @EqualsAndHashCode(of = "number")
-@Builder @AllArgsConstructor @NoArgsConstructor
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder @EqualsAndHashCode(of = "id")
 public class Student {
-
+    
     @Id @GeneratedValue
-    private Long number;
+    Long id;
 
     @Column(unique = true)
-    private String id;
-
-    private String password;
-
-    private String name;
+    String name;
     
-    private String school;
+    String school;
+
+    String email;
+
+    String password;
+
+    
 }

@@ -12,20 +12,28 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Getter @Setter @EqualsAndHashCode(of = "number")
-@Builder @AllArgsConstructor @NoArgsConstructor
-public class Enterprise {
 
+
+@Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder @EqualsAndHashCode(of = "id")
+public class Enterprise {
+    
     @Id @GeneratedValue
-    private Long number;
+    Long id;
 
     @Column(unique = true)
-    private String id;
-
-    private String password;
-
-    private String name;
+    String name;
     
+    String ph;
+
+    String email;
+
+    String companyNumber;
+
+    String password;
 
 }
