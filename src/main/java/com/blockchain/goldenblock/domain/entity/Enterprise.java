@@ -25,11 +25,12 @@ public class Enterprise {
     @Id @GeneratedValue
     Long id;
 
-    @Column(unique = true)
+    
     String name;
     
     String ph;
 
+    @Column(unique = true)
     String email;
 
     String companyNumber;
