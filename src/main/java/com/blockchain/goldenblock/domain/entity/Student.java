@@ -23,11 +23,11 @@ public class Student {
     @Id @GeneratedValue
     Long id;
 
-    @Column(unique = true)
     String name;
     
     String school;
 
+    @Column(unique = true)
     String email;
 
     String password;
