@@ -23,18 +23,18 @@ import lombok.Setter;
 public class Enterprise {
     
     @Id @GeneratedValue
-    Long id;
+    private Long id;
 
     
-    String name;
+    private String name;
     
-    String ph;
+    private String ph;
 
     @Column(unique = true)
-    String email;
+    private String email;
 
-    String companyNumber;
+    private String companyNumber;
 
-    String password;
+    private String password;
 
 }

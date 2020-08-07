@@ -21,16 +21,16 @@ import lombok.Setter;
 public class Student {
     
     @Id @GeneratedValue
-    Long id;
+    private Long id;
 
-    String name;
+    private String name;
     
-    String school;
+    private String school;
 
     @Column(unique = true)
-    String email;
+    private String email;
 
-    String password;
+    private String password;
 
     
 }
