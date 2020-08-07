@@ -1,12 +1,7 @@
 import axios from 'axios'
 
-
-
-
 class AuthenticationService {
 
-    
-    
     // send username, password to the SERVER
     executeJwtAuthenticationService(email, password) {
         
