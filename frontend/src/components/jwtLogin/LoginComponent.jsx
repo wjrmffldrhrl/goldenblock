@@ -7,7 +7,7 @@ class LoginComponent extends Component {
         super(props)
         
         this.state = {
-            username: localStorage.getItem("authenticatedUser") || '',
+            email: localStorage.getItem("authenticatedUser") || '',
             password: '',
             token: localStorage.getItem("token") || '',
             hasLoginFailed: false,
@@ -28,15 +28,15 @@ class LoginComponent extends Component {
 
     loginClicked() {
         AuthenticationService
-        // get username, password at the form
-        .executeJwtAuthenticationService(this.state.username, this.state.password)
+        // get email, password at the form
+        .executeJwtAuthenticationService(this.state.email, this.state.password)
         .then((response) => {
             console.log(response)
             this.setState({
                 token: response.data.token
             });
-            AuthenticationService.registerSuccessfulLoginForJwt(this.state.username,this.state.token)
-            this.props.history.push(`/welcome/${this.state.username}`)
+            AuthenticationService.registerSuccessfulLoginForJwt(this.state.email,this.state.token)
+            this.props.history.push(`/welcome/${this.state.email}`)
         }).catch( () =>{
             this.setState({showSuccessMessage:false})
             this.setState({hasLoginFailed:true})
@@ -50,7 +50,7 @@ class LoginComponent extends Component {
                 <div className="container">
                     {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
                     {this.state.showSuccessMessage && <div>Login Sucessful</div>}
-                    User Name: <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
+                    User Name: <input type="email" name="email" value={this.state.email} onChange={this.handleChange}/>
                     Password: <input type="password" name="password" value={this.state.password}  onChange={this.handleChange}/>
                     <button className="btn btn-success" onClick={this.loginClicked}>Login</button>
                 </div>

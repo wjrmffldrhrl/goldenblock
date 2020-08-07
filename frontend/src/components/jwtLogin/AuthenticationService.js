@@ -8,11 +8,11 @@ class AuthenticationService {
     
     
     // send username, password to the SERVER
-    executeJwtAuthenticationService(username, password) {
+    executeJwtAuthenticationService(email, password) {
         
 
         return axios.post('http://localhost:8080/authenticate', {
-            username,
+            email,
             password
         })
     }
@@ -26,11 +26,11 @@ class AuthenticationService {
     }
 
 
-    //save token with username
-    registerSuccessfulLoginForJwt(username, token) {
+    //save token with email
+    registerSuccessfulLoginForJwt(email, token) {
         console.log("===registerSuccessfulLoginForJwt===")
         localStorage.setItem('token', token);
-        localStorage.setItem('authenticatedUser', username);
+        localStorage.setItem('authenticatedUser', email);
 
         // axios.defaults.headers = {
         //     'Authorization' : 'Bearer ' + token,
@@ -83,7 +83,7 @@ class AuthenticationService {
         return false;
     }
 
-    getLoggedInUserName() {
+    getLoggedInUserEmail() {
 
         let user = localStorage.getItem('authenticatedUser');
         if (user === null) return '';
