@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
+//회원 로그인 시 입력한 이메일과 비밀번호로 토큰 생성 후 반환 
 public class JwtAuthenticationController {
 
     @Autowired
@@ -43,8 +44,8 @@ public class JwtAuthenticationController {
     }
 
     // Front에서 들어오는 회원 인증 요청
-    @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     // JwtRequest내부에 email, password가 맵핑되어 들어온다
+    @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
         
         // 들어온 값 출력
