@@ -11,7 +11,7 @@ class AuthenticationService {
     executeJwtAuthenticationService(email, password) {
         
 
-        return axios.post('http://localhost:8080/authenticate', {
+        return axios.post('/authenticate', {
             email,
             password
         })
@@ -22,7 +22,7 @@ class AuthenticationService {
         console.log("===executeHelloService===")
 
         this.setupAxiosInterceptors();
-        return axios.get('http://localhost:8080/hello');
+        return axios.get('/hello');
     }
 
 
