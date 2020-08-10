@@ -1,10 +1,12 @@
 package com.blockchain.goldenblock.controller;
 
 import com.blockchain.goldenblock.config.JwtTokenUtil;
+import com.blockchain.goldenblock.domain.dto.StudentDto;
 import com.blockchain.goldenblock.domain.model.JwtRequest;
 import com.blockchain.goldenblock.domain.model.JwtResponse;
 import com.blockchain.goldenblock.service.JwtUserDetailsService;
 
+import com.blockchain.goldenblock.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
+
 //회원 로그인 시 입력한 이메일과 비밀번호로 토큰 생성 후 반환 
 public class JwtAuthenticationController {
 
@@ -66,6 +69,7 @@ public class JwtAuthenticationController {
         //status 값과 함께 body(token) 전송
         return ResponseEntity.ok(new JwtResponse(token));
     }
+
 
  
 }

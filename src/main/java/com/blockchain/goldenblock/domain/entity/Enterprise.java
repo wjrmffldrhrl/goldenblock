@@ -1,9 +1,6 @@
 package com.blockchain.goldenblock.domain.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,13 +10,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder @EqualsAndHashCode(of = "id")
+@Table(name="Enterprise")
 public class Enterprise {
     
     @Id @GeneratedValue
