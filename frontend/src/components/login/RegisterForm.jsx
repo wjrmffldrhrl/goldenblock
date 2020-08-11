@@ -27,9 +27,7 @@ class RegisterForm extends Component {
     }
 
     handleSubmit(e) {
-        alert(this.state.email);
-        alert(this.state.password);
-        alert(this.state.passwordChecker);
+        alert(e.target.value);
         e.preventDefault();
     }
 
@@ -40,7 +38,7 @@ class RegisterForm extends Component {
                 <form>
                     <label>
                         email: 
-                        <input type="email" value={this.state.email} 
+                        <input type="email" name="email" value={this.state.email} 
                             onChange={this.handleEmailChange}/>
                     </label>
                     <label>
