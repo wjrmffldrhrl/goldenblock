@@ -31,16 +31,19 @@ class LoginComponent extends Component {
         // get email, password at the form
         .executeJwtAuthenticationService(this.state.email, this.state.password)
         .then((response) => {
-            console.log(response)
+            console.log("login response: " + response.status);
             this.setState({
                 token: response.data.token
             });
-            AuthenticationService.registerSuccessfulLoginForJwt(this.state.email,this.state.token)
-            this.props.history.push(`/welcome/${this.state.email}`)
+            AuthenticationService.registerSuccessfulLoginForJwt(this.state.email,this.state.token);
+            this.props.history.push(`/welcome/${this.state.email}`);
+            this.props.userStateChange(AuthenticationService.isUserLoggedIn());
         }).catch( () =>{
             this.setState({showSuccessMessage:false})
             this.setState({hasLoginFailed:true})
-        })
+        });
+
+        
     }
 
     render() {

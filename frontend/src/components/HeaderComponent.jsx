@@ -6,34 +6,42 @@ import AuthenticationService from '../services/AuthenticationService.js'
 class HeaderComponent extends Component {
     constructor(props) {
         super(props);
+        this.handleLogout = this.handleLogout.bind(this);
         this.state = {
-            isUserLoggedIn: AuthenticationService.isUserLoggedIn(),
+            
             welcomPath: '/welcome/' + AuthenticationService.getLoggedInUserEmail(),
         };
     }
+
+
+    handleLogout(e) {
+        AuthenticationService.logout();
+        this.props.userStateChange(AuthenticationService.isUserLoggedIn());
+    }
+
     render() {
         // const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
         // const userEmail = AuthenticationService.getLoggedInUserEmail();
         
         console.log("===HeaderomponeuserEmailnt===");
-        console.log(this.state.isUserLoggedIn);
-
+        console.log(this.props.isLoggedIn);
+        const isLoggedIn = this.props.isLoggedIn;
         return (
             <header>
                 <nav className="navbar navbar-expand-md navbar-dark bg-dark">
                     <div className="navbar-brand">Simple Login App JWT</div>
                     {
-                        this.state.isUserLoggedIn && <div>
+                        this.props.isLoggedIn && <div>
                             <ul className="navbar-nav">
                                 <li><Link className="nav-link" to={this.state.welcomPath}>Home</Link></li>
                             </ul>
                             <ul className="navbar-nav navbar-collapse justify-content-end">
-                                <li><Link className="nav-link" to="/logout" onClick={AuthenticationService.logout}>Logout</Link></li>
+                                <li><Link className="nav-link" to="/logout" onClick={this.handleLogout}>Logout</Link></li>
                             </ul>
                         </div>
                     }
                     {
-                        !this.state.isUserLoggedIn && <div>
+                        !this.props.isLoggedIn && <div>
                             <ul className="navbar-nav">
                                 
                             </ul>
