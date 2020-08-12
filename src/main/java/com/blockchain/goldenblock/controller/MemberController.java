@@ -17,7 +17,7 @@ public class MemberController {
 
     @RequestMapping(value = "/student", method = RequestMethod.GET)
     public void saveStudent(@RequestBody StudentDto studentDto) {
-        studentService.saveStudent(studentDto);
+        studentService.saveStudent(studentDto); //db에 저장
     }
 
     @ResponseStatus(value = HttpStatus.CONFLICT, reason = "Already exists")
