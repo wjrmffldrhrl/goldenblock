@@ -18,11 +18,11 @@ public class StudentService {
 
     @Transactional
     public Long saveStudent(StudentDto studentDto) {
-        System.out.println(studentDto.getPassword());
+
         studentDto.setPassword(passwordEncoder.encode(studentDto.getPassword()));
-        Student studentDto1 = studentRepository.findByEmail(studentDto.getEmail());
-        if(studentDto1!=null){
-            throw new MemberController.AlreadyExistsException("m");
+        boolean isExist = studentRepository.existsByEmail(studentDto.getEmail());
+        if(isExist){
+            throw new MemberController.AlreadyExistsException("change_email");
         }
         return studentRepository.save(studentDto.toEntity()).getId();
     }
