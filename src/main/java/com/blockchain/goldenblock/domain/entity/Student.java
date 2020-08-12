@@ -9,32 +9,39 @@ import lombok.*;
 @Getter
 @Setter
 @Builder @EqualsAndHashCode(of = "id")
-@Table(name="Student")
+@Table
+
 public class Student {
     
     @Id @GeneratedValue
     private Long id;
 
 
-    @Column(length=20, nullable = false)
+    @Column(length = 20, nullable = false)
+
     private String name;
 
-    @Column(length=20, nullable = false)
+    @Column(length = 20, nullable = false)
     private String school;
 
     @Column(length = 30, unique = true, nullable = false)
     private String email;
 
+    @Column(length = 50, nullable = false)
 
-    @Column(length=50 , nullable = false)
     private String password;
 
+    @Column(nullable = false)
+    private String publicKey;
+
     @Builder
-    public Student(Long id, String name, String school, String email, String password){
-        this.id=id;
-        this.name=name;
-        this.school=school;
-        this.email=email;
-        this.password=password;
+    public Student(Long id, String name, String school, String email,
+                   String password, String publicKey ){
+        this.id = id;
+        this.name = name;
+        this.school = school;
+        this.email = email;
+        this.password = password;
+        this.publicKey = publicKey;
     }
 }
