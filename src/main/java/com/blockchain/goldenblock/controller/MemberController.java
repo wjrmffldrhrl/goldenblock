@@ -6,17 +6,18 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @CrossOrigin
 @AllArgsConstructor
-@RequestMapping("/register")
+@RequestMapping("/register/*")
 public class MemberController {
     private StudentService studentService;
 
-    @RequestMapping("/student")
-    public StudentDto saveStudent(StudentDto studentDto) {
+    @RequestMapping(value = "/student", method = RequestMethod.GET)
+    public void saveStudent(@RequestBody StudentDto studentDto) {
         studentService.saveStudent(studentDto);
-        return studentDto;
     }
 
     @ResponseStatus(value = HttpStatus.CONFLICT, reason = "Already exists")

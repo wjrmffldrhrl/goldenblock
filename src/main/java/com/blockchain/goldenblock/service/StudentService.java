@@ -18,6 +18,7 @@ public class StudentService {
 
     @Transactional
     public Long saveStudent(StudentDto studentDto) {
+        System.out.println(studentDto.getPassword());
         studentDto.setPassword(passwordEncoder.encode(studentDto.getPassword()));
         Student studentDto1 = studentRepository.findByEmail(studentDto.getEmail());
         if(studentDto1!=null){
