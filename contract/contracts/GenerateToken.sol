@@ -11,6 +11,5 @@ contract GenerateToken is ERC20, Ownable{
 
     function payment(address _to, uint256 _amount) public returns (bool){
         // reciept validate
-
         _mint(_to, _amount);
     }
