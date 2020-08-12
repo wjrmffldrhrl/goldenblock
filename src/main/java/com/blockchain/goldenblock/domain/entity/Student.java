@@ -16,7 +16,9 @@ public class Student {
     @Id @GeneratedValue
     private Long id;
 
+
     @Column(length = 20, nullable = false)
+
     private String name;
 
     @Column(length = 20, nullable = false)
@@ -26,6 +28,7 @@ public class Student {
     private String email;
 
     @Column(length = 50, nullable = false)
+
     private String password;
 
     @Column(nullable = false)
