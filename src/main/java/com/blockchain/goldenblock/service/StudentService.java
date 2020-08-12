@@ -1,6 +1,8 @@
 package com.blockchain.goldenblock.service;
 
+import com.blockchain.goldenblock.controller.MemberController;
 import com.blockchain.goldenblock.domain.dto.StudentDto;
+import com.blockchain.goldenblock.domain.entity.Student;
 import com.blockchain.goldenblock.domain.repository.StudentRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,15 +18,14 @@ public class StudentService {
 
     @Transactional
     public Long saveStudent(StudentDto studentDto) {
+        System.out.println(studentDto.getPassword());
         studentDto.setPassword(passwordEncoder.encode(studentDto.getPassword()));
+        Student studentDto1 = studentRepository.findByEmail(studentDto.getEmail());
+        if(studentDto1!=null){
+            throw new MemberController.AlreadyExistsException("m");
+        }
         return studentRepository.save(studentDto.toEntity()).getId();
     }
-    @Transactional
-    public String idCheck(String email) {
-        if (studentRepository.findByEmail(email) == null) {
-            return "ok";
-        } else {
-            return "notok";
-        }
-    }
+
+
 }

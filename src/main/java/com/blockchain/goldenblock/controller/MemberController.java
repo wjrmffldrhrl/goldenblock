@@ -3,26 +3,27 @@ package com.blockchain.goldenblock.controller;
 import com.blockchain.goldenblock.domain.dto.StudentDto;
 import com.blockchain.goldenblock.service.StudentService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @CrossOrigin
 @AllArgsConstructor
-@RequestMapping("/register")
+@RequestMapping("/register/*")
 public class MemberController {
     private StudentService studentService;
 
-    @RequestMapping("/student")
-    public StudentDto saveStudent(StudentDto studentDto) {
-        studentService.saveStudent(studentDto);
-        return studentDto;
+    @RequestMapping(value = "/student", method = RequestMethod.GET)
+    public void saveStudent(@RequestBody StudentDto studentDto) {
+        studentService.saveStudent(studentDto); //db에 저장
     }
-    @RequestMapping("/idok")
-    public String idcheck(String email) {
-        String msg = studentService.idCheck(email);
-        return msg;
+
+    @ResponseStatus(value = HttpStatus.CONFLICT, reason = "Already exists")
+    public static class AlreadyExistsException extends RuntimeException {
+        public AlreadyExistsException(String message) {
+            super(message);
+        }
     }
 }
