@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Service
-@AllArgsConstructor // 모든 필드를 파람으로 가지는 생성자를 만듦
+@RequiredArgsConstructor
 public class EnterpriseService {
     private EnterpriseRepository enterpriseRepository;
     private final PasswordEncoder passwordEncoder;
