@@ -3,15 +3,16 @@ package com.blockchain.goldenblock.service;
 import com.blockchain.goldenblock.controller.MemberController;
 import com.blockchain.goldenblock.domain.dto.StudentDto;
 import com.blockchain.goldenblock.domain.repository.StudentRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class StudentService {
-    private StudentRepository studentRepository;
+    private final StudentRepository studentRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Transactional

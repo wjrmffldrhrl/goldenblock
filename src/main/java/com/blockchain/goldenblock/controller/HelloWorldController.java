@@ -12,5 +12,4 @@ public class HelloWorldController {
         return "Hello. you have valid JWT (JSon Web Token)!";
     }
 
-
 }

@@ -1,13 +1,12 @@
 package com.blockchain.goldenblock.controller;
 
+import com.blockchain.goldenblock.domain.dto.EnterpriseDto;
 import com.blockchain.goldenblock.domain.dto.StudentDto;
 import com.blockchain.goldenblock.service.EnterpriseService;
 import com.blockchain.goldenblock.service.StudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -17,14 +16,14 @@ public class MemberController {
     private StudentService studentService;
     private EnterpriseService enterpriseService;
 
-    @RequestMapping(value = "/student", method = RequestMethod.GET)
+    @PostMapping("/student")
     public void saveStudent(@RequestBody StudentDto studentDto) {
-        studentService.saveStudent(studentDto); //db에 저장
+        studentService.saveStudent(studentDto); // db에 저장
     }
 
-   @GetMapping("/enterprise")
+    @PostMapping("/enterprise")
     public void saveEnterprise(@RequestBody EnterpriseDto enterpriseDto) {
-        enterpriseService.saveEnterprise(enterpriseDto); //db에 저장
+        enterpriseService.saveEnterprise(enterpriseDto); // db에 저장
     }
 
     @ResponseStatus(value = HttpStatus.CONFLICT, reason = "Already exists")
