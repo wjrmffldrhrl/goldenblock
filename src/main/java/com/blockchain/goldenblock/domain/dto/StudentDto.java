@@ -15,8 +15,9 @@ public class StudentDto {
     private String email;
     private String password;
     private String publicKey;
+
     @Builder
-    public Student toEntity(){
+    public Student toEntity() {
         Student student = Student.builder()
                 .name(name)
                 .school(school)
@@ -24,6 +25,6 @@ public class StudentDto {
                 .password(password)
                 .publicKey(publicKey)
                 .build();
-                return student;
+        return student;
     }
 }
