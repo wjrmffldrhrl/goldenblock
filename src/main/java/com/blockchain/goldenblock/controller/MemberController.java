@@ -22,7 +22,7 @@ public class MemberController {
         studentService.saveStudent(studentDto); //db에 저장
     }
 
-    @RequestMapping(value = "/enterprise", method = RequestMethod.GET)
+   @GetMapping("/enterprise")
     public void saveEnterprise(@RequestBody EnterpriseDto enterpriseDto) {
         enterpriseService.saveEnterprise(enterpriseDto); //db에 저장
     }
