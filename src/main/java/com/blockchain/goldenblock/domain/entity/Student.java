@@ -8,17 +8,17 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
-@Builder @EqualsAndHashCode(of = "id")
+@Builder
+@EqualsAndHashCode(of = "id")
 @Table
-
 public class Student {
-    
-    @Id @GeneratedValue
+
+    @Id
+    @GeneratedValue
     private Long id;
 
 
     @Column(length = 20, nullable = false)
-
     private String name;
 
     @Column(length = 20, nullable = false)
@@ -28,7 +28,6 @@ public class Student {
     private String email;
 
     @Column(length = 50, nullable = false)
-
     private String password;
 
     @Column(nullable = false)
@@ -36,7 +35,7 @@ public class Student {
 
     @Builder
     public Student(Long id, String name, String school, String email,
-                   String password, String publicKey ){
+                   String password, String publicKey) {
         this.id = id;
         this.name = name;
         this.school = school;
