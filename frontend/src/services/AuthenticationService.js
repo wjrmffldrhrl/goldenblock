@@ -86,10 +86,12 @@ class AuthenticationService {
     }
 
 
-    executeStudentRegister(email, password) {
+    executeStudentRegister(email, password, name, school) {
         return axios.post('/register/student', {
             email,
-            password
+            password,
+            name,
+            school
         });
     }
 

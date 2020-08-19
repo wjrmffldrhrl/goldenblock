@@ -7,7 +7,9 @@ class RegisterForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            name: '',
             email: '',
+            school: '',
             password: '',
             passwordChecker: ''
         }
@@ -26,15 +28,12 @@ class RegisterForm extends Component {
     }
 
     handleSubmit(e) {
-        alert(this.state.email);
-        alert(this.state.password);
-        alert(this.state.passwordChecker);
-
         
         if(this.passwordIsSame()){
             AuthenticationService
             // get email, password at the form
-            .executeStudentRegister(this.state.email, this.state.password)
+            .executeStudentRegister(this.state.email, this.state.password, 
+                this.state.name, this.state.school)
             .then((response) => {
                 console.log("register response: " + response.status);
                 
@@ -74,6 +73,16 @@ class RegisterForm extends Component {
                     <label>
                         email: 
                         <input type="email" name="email" value={this.state.email} 
+                            onChange={this.handleChange}/>
+                    </label>
+                    <label>
+                        name: 
+                        <input type="text" name="name" value={this.state.name} 
+                            onChange={this.handleChange}/>
+                    </label>
+                    <label>
+                        school: 
+                        <input type="text" name="school" value={this.state.school} 
                             onChange={this.handleChange}/>
                     </label>
                     <label>

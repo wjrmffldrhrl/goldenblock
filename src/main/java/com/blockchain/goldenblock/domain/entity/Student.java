@@ -27,10 +27,9 @@ public class Student {
     @Column(length = 30, unique = true, nullable = false)
     private String email;
 
-    @Column(length = 50, nullable = false)
+    @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
     private String publicKey;
 
     @Builder
