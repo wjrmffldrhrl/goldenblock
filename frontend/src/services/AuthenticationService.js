@@ -1,12 +1,7 @@
 import axios from 'axios'
 
-
-
-
 class AuthenticationService {
 
-    
-    
     // send username, password to the SERVER
     executeJwtAuthenticationService(email, password) {
         
@@ -14,7 +9,7 @@ class AuthenticationService {
         return axios.post('/authenticate', {
             email,
             password
-        })
+        });
     }
 
     //send get method to /hello
@@ -88,6 +83,14 @@ class AuthenticationService {
         let user = localStorage.getItem('authenticatedUser');
         if (user === null) return '';
         return user;
+    }
+
+
+    executeStudentRegister(email, password) {
+        return axios.post('/register/student', {
+            email,
+            password
+        });
     }
 
 

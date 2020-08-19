@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import AuthenticationService from './AuthenticationService.js'
+import AuthenticationService from '../../services/AuthenticationService.js'
 
 class WelcomeComponent extends Component {
     
