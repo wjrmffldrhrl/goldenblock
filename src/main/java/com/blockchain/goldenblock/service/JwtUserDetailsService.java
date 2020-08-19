@@ -1,5 +1,8 @@
 package com.blockchain.goldenblock.service;
 
+import com.blockchain.goldenblock.domain.entity.Enterprise;
+import com.blockchain.goldenblock.domain.model.EnterpriseDetails;
+import com.blockchain.goldenblock.domain.repository.EnterpriseRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -27,7 +30,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 
         Student student = studentRepository.findByEmail(email);
 
-        if(student == null){
+        if (student == null) {
             throw new UsernameNotFoundException("User not found with email: " + email);
         } else {
             return new StudentDetails(student);

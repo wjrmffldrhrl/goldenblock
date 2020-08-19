@@ -6,15 +6,20 @@ import com.blockchain.goldenblock.service.EnterpriseService;
 import com.blockchain.goldenblock.service.StudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @CrossOrigin
 @AllArgsConstructor
 @RequestMapping("/register/*")
 public class MemberController {
-    private StudentService studentService;
-    private EnterpriseService enterpriseService;
+    private final StudentService studentService;
+    private final EnterpriseService enterpriseService;
 
     @PostMapping("/student")
     public void saveStudent(@RequestBody StudentDto studentDto) {

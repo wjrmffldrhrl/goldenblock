@@ -65,7 +65,7 @@ public class JwtTokenUtil implements Serializable {
                 .signWith(SignatureAlgorithm.HS512, secret).compact();
     }
 
-    // validate token
+    // validate token 토큰확인
     public Boolean validateToken(String token, UserDetails userDetails) {
         final String userEmail = getUserEmailFromToken(token);
         // userDetails의 userName은 email이다.

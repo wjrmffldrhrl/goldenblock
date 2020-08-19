@@ -5,6 +5,7 @@ import javax.persistence.*;
 import lombok.*;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Entity
 @Getter
 @Setter
@@ -16,7 +17,6 @@ public class Student {
     @Id
     @GeneratedValue
     private Long id;
-
 
     @Column(length = 20, nullable = false)
     private String name;
@@ -33,14 +33,4 @@ public class Student {
     @Column(nullable = false)
     private String publicKey;
 
-    @Builder
-    public Student(Long id, String name, String school, String email,
-                   String password, String publicKey) {
-        this.id = id;
-        this.name = name;
-        this.school = school;
-        this.email = email;
-        this.password = password;
-        this.publicKey = publicKey;
-    }
 }

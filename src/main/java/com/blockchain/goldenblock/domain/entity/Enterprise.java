@@ -5,6 +5,7 @@ import javax.persistence.*;
 import lombok.*;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Entity
 @Getter
 @Setter
@@ -31,17 +32,5 @@ public class Enterprise {
 
     @Column(length = 50, nullable = false)
     private String password;
-
-    @Builder
-    public Enterprise(Long id, String name, String ph, String email, String companyNumber, String password) {
-        this.id = id;
-        this.name = name;
-        this.ph = ph;
-        this.email = email;
-        this.companyNumber = companyNumber;
-        this.password = password;
-
-
-    }
 
 }

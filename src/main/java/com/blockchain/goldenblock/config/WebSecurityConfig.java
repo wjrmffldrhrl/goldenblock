@@ -18,7 +18,8 @@ import org.springframework.web.cors.CorsConfiguration;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true) // false가 기본값, 인가 처리
+//@RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
@@ -57,11 +58,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // dont authenticate this particular request
                 .authorizeRequests().antMatchers("/authenticate", "/register/*").permitAll().
                 // all other requests need to be authenticated
+                        antMatchers("/student").hasRole("STUDENT").
+                antMatchers("/enterprise").hasRole("ENTERPRISE").
                 anyRequest().authenticated().and().
+                formLogin()
+                .loginPage("/login") // 로그인 페이지 링크
+                .defaultSuccessUrl("/"); // 로그인 성공 후 리다이렉트 주소
 
-                // stateless session
-                // exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
-                exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
+        // stateless session
+        httpSecurity.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         // Add a filter to validate the tokens with every request

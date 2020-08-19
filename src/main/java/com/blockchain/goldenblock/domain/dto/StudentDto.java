@@ -25,6 +25,7 @@ public class StudentDto {
                 .password(password)
                 .publicKey(publicKey)
                 .build();
+
         return student;
     }
 }
