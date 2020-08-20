@@ -17,7 +17,6 @@ import java.util.List;
 public class Research {
     @Id
     @GeneratedValue
-    @Column(name = "RESEARCH_ID")
     private Long id;
 
     @Column(nullable = false)
@@ -36,7 +35,7 @@ public class Research {
     private String researchStatus;
 
     @OneToMany(mappedBy = "research", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<ResearchStudentMember> researchStudentMembers = new ArrayList<>();
+    private List<ResearchStudentMember> researches = new ArrayList<>();
 
     @Builder
     public Research(Long id, String researchTitle, String researchContent, String prizeMoney, LocalDateTime deadLine, String researchStatus) {

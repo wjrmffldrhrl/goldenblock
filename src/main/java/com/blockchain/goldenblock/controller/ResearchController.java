@@ -21,12 +21,12 @@ public class ResearchController {
         return ResearchList;
     }
 
-    @PostMapping("/post")
+    @PostMapping("/post/research")
     public void postResearch(@RequestBody ResearchDto researchDto){
         researchService.savePost(researchDto);
     }
 
-    @PostMapping("/get/{no}")
+    @PostMapping("/get/research/{no}")
     @ResponseBody
     public ResearchDto getResearch(@PathVariable("no") Long no) {
         ResearchDto researchDto = researchService.getPost(no);

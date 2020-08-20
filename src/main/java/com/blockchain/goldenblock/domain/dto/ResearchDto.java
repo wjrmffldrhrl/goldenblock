@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Setter
 @ToString
 @NoArgsConstructor
+@Builder
 public class ResearchDto {
     private Long id;
     private String researchTitle;
@@ -17,7 +18,7 @@ public class ResearchDto {
     private LocalDateTime deadLine;
     private String researchStatus;
 
-    
+
     public Research toEntity() {
         Research research  = Research.builder()
                 .researchTitle(researchTitle)
@@ -29,14 +30,5 @@ public class ResearchDto {
 
         return research;
     }
-    @Builder
-    public ResearchDto(Long id, String researchTitle, String researchContent, String prizeMoney, LocalDateTime deadLine, String researchStatus) {
-        this.id = id;
-        this.researchTitle = researchTitle;
-        this.researchContent = researchContent;
-        this.prizeMoney = prizeMoney;
-        this.deadLine = deadLine;
-        this.researchStatus = researchStatus;
 
-    }
 }

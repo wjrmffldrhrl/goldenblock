@@ -35,7 +35,7 @@ public class Student {
     private String publicKey;
 
     @OneToMany(mappedBy = "student", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<ResearchStudentMember> researchStudentMembers = new ArrayList<>();
+    private List<ResearchStudentMember> students = new ArrayList<>();
 
     @Builder
     public Student(Long id, String name, String school, String email,

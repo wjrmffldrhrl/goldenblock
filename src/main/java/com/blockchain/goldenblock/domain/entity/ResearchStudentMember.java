@@ -14,7 +14,7 @@ public class ResearchStudentMember {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "STUDENT_ID")
+    @JoinColumn(name = "student_id")
     private Student student;
 ​
     @ManyToOne
