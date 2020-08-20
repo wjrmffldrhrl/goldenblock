@@ -4,6 +4,9 @@ import javax.persistence.*;
 
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Getter
@@ -16,7 +19,6 @@ public class Student {
     @Id
     @GeneratedValue
     private Long id;
-
 
     @Column(length = 20, nullable = false)
     private String name;
@@ -31,6 +33,9 @@ public class Student {
     private String password;
 
     private String publicKey;
+
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<ResearchStudentMember> researchStudentMembers = new ArrayList<>();
 
     @Builder
     public Student(Long id, String name, String school, String email,
