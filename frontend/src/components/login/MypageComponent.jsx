@@ -2,13 +2,14 @@ import React, {Component} from 'react'
 
 import AuthenticationService from '../../services/AuthenticationService.js'
 
-class WelcomeComponent extends Component {
+class MypageComponent extends Component {
     
     constructor(props) {
         super(props)
         this.retrieveWelcomeMessage = this.retrieveWelcomeMessage.bind(this)
         this.state = {
-            welcomeMessage : ''
+            welcomeMessage : '',
+            loggedInUser : AuthenticationService.getLoggedInUserEmail()
         }
         this.handleSuccessfulResponse = this.handleSuccessfulResponse.bind(this)
         this.handleError = this.handleError.bind(this)
@@ -45,11 +46,12 @@ class WelcomeComponent extends Component {
     render() {
         return (
             <>
-                <h1>Welcome!</h1>
+                <h1>My Page</h1>
                 <div className="container">
-                    Welcome {this.props.match.params.name}.
+                    Welcome {this.state.loggedInUser}.
                 </div>
                 <div className="container">
+                    
                     Check if axiosInterceptors is working well!<br></br>
                     <button onClick={this.retrieveWelcomeMessage} 
                         className="btn btn-success">Get Message</button>
@@ -64,4 +66,4 @@ class WelcomeComponent extends Component {
 }
 
 
-export default WelcomeComponent
+export default MypageComponent
