@@ -8,7 +8,6 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
-@Builder
 @EqualsAndHashCode(of = "id")
 @Table
 public class Enterprise {
