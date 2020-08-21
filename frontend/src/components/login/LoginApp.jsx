@@ -11,7 +11,7 @@ import AuthenticationService from '../../services/AuthenticationService';
 import MainComponent from './MainComponent.jsx';
 import { withRouter } from 'react-router'
 import RegisterForm from './RegisterForm';
-
+import ResearchListComponent from '../research/ResearchListComponent';
 class LoginApp extends Component {
 
     constructor(props) {
@@ -45,7 +45,7 @@ class LoginApp extends Component {
                             <Route path="/register" component={RegisterForm}/>
                             <AuthenticatedRoute path="/mypage" component={MypageComponent}/>
                             <AuthenticatedRoute path="/logout" component={LogoutComponent}/>
-                            
+                            <AuthenticatedRoute path="/researches" component={ResearchListComponent}/>
                             <Route component={ErrorComponent}/>
                         </Switch>
                         <FooterComponent/>

@@ -36,6 +36,9 @@ class HeaderComponent extends Component {
                             <ul className="navbar-nav">
                                 <li><Link className="nav-link" to="/mypage">My page</Link></li>
                             </ul>
+                            <ul className="navbar-nav">
+                                <li><Link className="nav-link" to="/researches">Research List</Link></li>
+                            </ul>
                             <ul className="navbar-nav navbar-collapse justify-content-end">
                                 <li><Link className="nav-link" to="/logout" onClick={this.handleLogout}>Logout</Link></li>
                             </ul>
@@ -52,15 +55,7 @@ class HeaderComponent extends Component {
                             </ul>
                         </div>
                     }
-                    {/* <ul className="navbar-nav">
-                        {this.state.isUserLoggedIn && <li><Link className="nav-link" to="/welcome/user_id">Home</Link></li>}
-                    </ul>
-
-                    <ul className="navbar-nav navbar-collapse justify-content-end">
-                        {!this.state.isUserLoggedIn && <li><Link className="nav-link" to="/login">Login</Link></li>}
-                        {!this.state.isUserLoggedIn && <li><Link className="nav-link" to="/register">Sign Up</Link></li>}
-                        {this.state.isUserLoggedIn && <li><Link className="nav-link" to="/logout" onClick={AuthenticationService.logout}>Logout</Link></li>}
-                    </ul> */}
+                   
                 </nav>
             </header>
         )
