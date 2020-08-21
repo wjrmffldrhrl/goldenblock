@@ -15,7 +15,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @Service
 public class ResearchService {
-    private ResearchRepository researchRepository;
+    private final ResearchRepository researchRepository;
 
     @Transactional
     public Long savePost(ResearchDto researchDto) {
@@ -28,7 +28,6 @@ public class ResearchService {
 
         for ( Research research : researchEntities) {
             ResearchDto researchDto = ResearchDto.builder()
-                    .id(research.getId())
                     .researchTitle(research.getResearchTitle())
                     .researchContent(research.getResearchContent())
                     .prizeMoney(research.getPrizeMoney())
@@ -48,7 +47,6 @@ public class ResearchService {
         Research research = researchEntityWrapper.get();
 
         ResearchDto researchDto = ResearchDto.builder()
-                .id(research.getId())
                 .researchTitle(research.getResearchTitle())
                 .researchContent(research.getResearchContent())
                 .prizeMoney(research.getPrizeMoney())

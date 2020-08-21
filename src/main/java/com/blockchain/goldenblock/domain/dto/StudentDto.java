@@ -25,4 +25,13 @@ public class StudentDto {
                 .build();
         return student;
     }
+    @Builder
+    public StudentDto(String name, String school, String email,
+                   String password) {
+        this.name = name;
+        this.school = school;
+        this.email = email;
+        this.password = password;
+
+    }
 }

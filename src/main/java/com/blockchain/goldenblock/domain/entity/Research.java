@@ -10,8 +10,6 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Getter
-@Setter
-@Builder
 @EqualsAndHashCode(of = "id")
 @Table
 public class Research {
@@ -35,7 +33,7 @@ public class Research {
     private String researchStatus;
 
     @OneToMany(mappedBy = "research", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<ResearchStudentMember> researches = new ArrayList<>();
+    private List<ResearchStudentMember> researchStudentMembers = new ArrayList<>();
 
     @Builder
     public Research(Long id, String researchTitle, String researchContent, String prizeMoney, LocalDateTime deadLine, String researchStatus) {

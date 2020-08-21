@@ -4,10 +4,11 @@ import lombok.*;
 
 import javax.persistence.*;
 
+
 @Entity
 @Getter @Setter @EqualsAndHashCode(of = "id")
-@Builder @AllArgsConstructor @NoArgsConstructor
-@IdClass(ResearchStudentId.class)
+@AllArgsConstructor @NoArgsConstructor
+@Builder
 public class ResearchStudentMember {
     @Id
     @GeneratedValue
@@ -16,7 +17,7 @@ public class ResearchStudentMember {
     @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;
-​
+
     @ManyToOne
     @JoinColumn(name = "research_id")
     private Research research;
