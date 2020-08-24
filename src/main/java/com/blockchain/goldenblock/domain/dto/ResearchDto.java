@@ -2,8 +2,10 @@ package com.blockchain.goldenblock.domain.dto;
 
 import com.blockchain.goldenblock.domain.entity.Research;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 
 @Getter
 @Setter
@@ -13,7 +15,7 @@ public class ResearchDto {
     private String researchTitle;
     private String researchContent;
     private String prizeMoney;
-    private LocalDateTime deadLine;
+    private LocalDate deadLine;
     private String researchStatus;
 
 
@@ -29,7 +31,7 @@ public class ResearchDto {
         return research;
     }
     @Builder
-    public ResearchDto(String researchTitle, String researchContent, String prizeMoney, LocalDateTime deadLine, String researchStatus) {
+    public ResearchDto(String researchTitle, String researchContent, String prizeMoney, LocalDate deadLine, String researchStatus) {
         this.researchTitle = researchTitle;
         this.researchContent = researchContent;
         this.prizeMoney = prizeMoney;

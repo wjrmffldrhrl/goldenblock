@@ -1,8 +1,10 @@
 package com.blockchain.goldenblock.domain.entity;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +31,7 @@ public class Research {
     private String prizeMoney;
 
     @Column(nullable = false)
-    private LocalDateTime deadLine;
+    private LocalDate deadLine;
 
     @Column(nullable = false)
     private String researchStatus;
