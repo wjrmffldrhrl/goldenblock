@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import AuthenticationService from '../../services/AuthenticationService';
 import InfoService from '../../services/InfoService';
-class MypageComponent extends Component {
+class MyPageComponent extends Component {
     
     constructor(props) {
         super(props)
@@ -90,4 +90,4 @@ class MypageComponent extends Component {
 }
 
 
-export default MypageComponent
+export default MyPageComponent

@@ -6,7 +6,7 @@ import ErrorComponent from '../error/Error.jsx'
 import HeaderComponent from '../HeaderComponent.jsx'
 import FooterComponent from '../FooterComponent.jsx'
 import LogoutComponent from './LogoutComponent.jsx'
-import MypageComponent from './MypageComponent.jsx'
+import MyPageComponent from './MyPageComponent.jsx'
 import AuthenticationService from '../../services/AuthenticationService';
 import MainComponent from './MainComponent.jsx';
 import { withRouter } from 'react-router'
@@ -43,7 +43,7 @@ class LoginApp extends Component {
                             <Route path="/login" render={
                                 (props) => <LoginComponent {...props} userStateChange={this.handleUserState}/>}/>
                             <Route path="/register" component={RegisterForm}/>
-                            <AuthenticatedRoute path="/mypage" component={MypageComponent}/>
+                            <AuthenticatedRoute path="/mypage" component={MyPageComponent}/>
                             <AuthenticatedRoute path="/logout" component={LogoutComponent}/>
                             <AuthenticatedRoute path="/researches" component={ResearchListComponent}/>
                             <Route component={ErrorComponent}/>
