@@ -11,22 +11,22 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @AllArgsConstructor
-@RequestMapping("/research/*")
+@RequestMapping("researches/*")
 public class ResearchController {
     private ResearchService researchService;
 
-    @GetMapping("/")
+    @GetMapping("/list")
     public List<ResearchDto> list() {
         List<ResearchDto> ResearchList = researchService.getResearchList();
         return ResearchList;
     }
 
-    @PostMapping("/post/research")
+    @PostMapping("/post")
     public void postResearch(@RequestBody ResearchDto researchDto){
         researchService.savePost(researchDto);
     }
 
-    @PostMapping("/get/research/{no}")
+    @GetMapping("/list/{no}")
     @ResponseBody
     public ResearchDto getResearch(@PathVariable("no") Long no) {
         ResearchDto researchDto = researchService.getPost(no);

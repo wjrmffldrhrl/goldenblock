@@ -58,6 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/authenticate", "/register/*", "research/*").permitAll()
                 .antMatchers("/only-student").hasRole("STUDENT").
+
                 // all other requests need to be authenticated
                 anyRequest().authenticated().and().
 

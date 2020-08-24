@@ -1,8 +1,10 @@
 package com.blockchain.goldenblock.domain.entity;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,8 @@ import java.util.List;
 @Getter
 @EqualsAndHashCode(of = "id")
 @Table
+@Builder
+@AllArgsConstructor
 public class Research {
     @Id
     @GeneratedValue
@@ -27,7 +31,7 @@ public class Research {
     private String prizeMoney;
 
     @Column(nullable = false)
-    private LocalDateTime deadLine;
+    private LocalDate deadLine;
 
     @Column(nullable = false)
     private String researchStatus;
@@ -35,14 +39,4 @@ public class Research {
     @OneToMany(mappedBy = "research", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<ResearchStudentMember> researchStudentMembers = new ArrayList<>();
 
-    @Builder
-    public Research(Long id, String researchTitle, String researchContent, String prizeMoney, LocalDateTime deadLine, String researchStatus) {
-        this.id = id;
-        this.researchTitle = researchTitle;
-        this.researchContent = researchContent;
-        this.prizeMoney = prizeMoney;
-        this.deadLine = deadLine;
-        this.researchStatus = researchStatus;
-
-    }
 }
