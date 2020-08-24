@@ -15,7 +15,7 @@ public class EnterpriseDetails extends User {
     // 스프링 시큐리티가 다루는 유저 정보를 우리가 가지고 있는 도메인의 유저 정보와 연동
     public EnterpriseDetails(Enterprise enterprise) {
         super(enterprise.getEmail(), enterprise.getPassword(), 
-            List.of(new SimpleGrantedAuthority("ENTERPRISE")));
+            List.of(new SimpleGrantedAuthority("ROLE_ENTERPRISE")));
         this.enterprise = enterprise;
     }
 }
