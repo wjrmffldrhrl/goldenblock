@@ -12,6 +12,8 @@ import java.util.List;
 @Getter
 @EqualsAndHashCode(of = "id")
 @Table
+@Builder
+@AllArgsConstructor
 public class Research {
     @Id
     @GeneratedValue
@@ -35,14 +37,4 @@ public class Research {
     @OneToMany(mappedBy = "research", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<ResearchStudentMember> researchStudentMembers = new ArrayList<>();
 
-    @Builder
-    public Research(Long id, String researchTitle, String researchContent, String prizeMoney, LocalDateTime deadLine, String researchStatus) {
-        this.id = id;
-        this.researchTitle = researchTitle;
-        this.researchContent = researchContent;
-        this.prizeMoney = prizeMoney;
-        this.deadLine = deadLine;
-        this.researchStatus = researchStatus;
-
-    }
 }

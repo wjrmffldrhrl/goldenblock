@@ -13,6 +13,9 @@ import java.util.List;
 @Setter
 @EqualsAndHashCode(of = "id")
 @Table
+@Builder
+@AllArgsConstructor
+
 public class Student {
 
     @Id
@@ -35,15 +38,4 @@ public class Student {
 
     @OneToMany(mappedBy = "student", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<ResearchStudentMember> researchStudentMembers = new ArrayList<>();
-
-    @Builder
-    public Student(Long id, String name, String school, String email,
-                   String password, String publicKey) {
-        this.id = id;
-        this.name = name;
-        this.school = school;
-        this.email = email;
-        this.password = password;
-        this.publicKey = publicKey;
-    }
 }
