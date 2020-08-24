@@ -14,8 +14,13 @@ public class HelloWorldController {
     }
 
     @GetMapping("/only-student")
-    public String roleTest() {
+    public String roleTestForStudent() {
         return "only-student!";
+    }
+
+    @GetMapping("/only-enterprise")
+    public String roleTestForEnterprise() {
+        return "only-enterprise!";
     }
 
 }
