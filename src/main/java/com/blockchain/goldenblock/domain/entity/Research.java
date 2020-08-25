@@ -12,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Getter
+@Setter
 @EqualsAndHashCode(of = "id")
 @Table
 @Builder
@@ -21,11 +22,22 @@ public class Research {
     @GeneratedValue
     private Long id;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Column(nullable = false)
     private String researchTitle;
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String researchContent;
+
+    @Column(nullable = false)
+    private String companyName;
 
     @Column(nullable = false)
     private String prizeMoney;

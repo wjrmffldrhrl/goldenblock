@@ -1,13 +1,23 @@
 package com.blockchain.goldenblock.service;
 
+import com.blockchain.goldenblock.domain.dto.EnterpriseDto;
 import com.blockchain.goldenblock.domain.dto.ResearchDto;
+import com.blockchain.goldenblock.domain.dto.StudentDto;
+import com.blockchain.goldenblock.domain.entity.Enterprise;
 import com.blockchain.goldenblock.domain.entity.Research;
+import com.blockchain.goldenblock.domain.entity.ResearchStudentMember;
+import com.blockchain.goldenblock.domain.entity.Student;
+import com.blockchain.goldenblock.domain.repository.EnterpriseRepository;
+import com.blockchain.goldenblock.domain.repository.ResearchMemberRepository;
 import com.blockchain.goldenblock.domain.repository.ResearchRepository;
+import com.blockchain.goldenblock.domain.repository.StudentRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -16,9 +26,14 @@ import java.util.Optional;
 @Service
 public class ResearchService {
     private final ResearchRepository researchRepository;
+    private final StudentRepository studentRepository;
+    private final EnterpriseRepository enterpriseRepository;
+    private final ResearchMemberRepository researchMemberRepository;
 
     @Transactional
-    public Long savePost(ResearchDto researchDto) {
+    public Long saveResearch(ResearchDto researchDto, String email) {
+        Enterprise enterprise = enterpriseRepository.findByEmail(email);
+        researchDto.setCompanyName(enterprise.getName());
         return researchRepository.save(researchDto.toEntity()).getId();
     }
     @Transactional
@@ -59,5 +74,17 @@ public class ResearchService {
     @Transactional
     public void deletePost(Long id) {
         researchRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void participateResearch(String researchTitle, String email) {
+        Student student = studentRepository.findByEmail(email);
+        Research research = researchRepository.findTop1ByResearchTitle(researchTitle);
+
+        researchMemberRepository.save(ResearchStudentMember.builder()
+                .addTime(LocalDate.now())
+                .research(research)
+                .student(student)
+                .build());
     }
 }
