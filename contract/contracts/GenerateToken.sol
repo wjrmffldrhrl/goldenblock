@@ -4,7 +4,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract GenerateToken is ERC20 {
     
-    constructor(uint initialSupply) public ERC20("Golden", "GLD") {
+    constructor() public ERC20("Golden", "GLD") {
         _mint(msg.sender, 10000);
     }
     
