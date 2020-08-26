@@ -36,6 +36,5 @@ public class EnterpriseDto {
         this.companyNumber = companyNumber;
         this.password = password;
 
-
     }
 }
