@@ -14,6 +14,7 @@ public class StudentDto {
     private String school;
     private String email;
     private String password;
+    private String rank;
     
     public Student toEntity() {
         Student student = Student.builder()
@@ -21,6 +22,7 @@ public class StudentDto {
                 .school(school)
                 .email(email)
                 .password(password)
+                .rank(rank)
                 .build();
         return student;
     }
