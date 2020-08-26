@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LoginApp from './components/jwtLogin/LoginApp'
+import LoginApp from './components/login/LoginApp'
 
 
 class App extends Component {

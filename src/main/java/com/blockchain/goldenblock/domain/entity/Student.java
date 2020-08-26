@@ -1,36 +1,41 @@
 package com.blockchain.goldenblock.domain.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Getter
 @Setter
+@EqualsAndHashCode(of = "id")
+@Table
+@Builder
 @AllArgsConstructor
-@NoArgsConstructor
-@Builder @EqualsAndHashCode(of = "id")
+
 public class Student {
-    
-    @Id @GeneratedValue
-    Long id;
 
-    String name;
-    
-    String school;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-    @Column(unique = true)
-    String email;
+    @Column(length = 20, nullable = false)
+    private String name;
 
-    String password;
+    @Column(length = 20, nullable = false)
+    private String school;
 
-    
+    @Column(length = 30, unique = true, nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    private String publicKey;
+
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<ResearchStudentMember> researchStudentMembers = new ArrayList<>();
 }

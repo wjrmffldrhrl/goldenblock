@@ -1,19 +1,31 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 
-import AuthenticationService from './AuthenticationService.js'
+import AuthenticationService from '../../services/AuthenticationService';
+import InfoService from '../../services/InfoService';
 
-class WelcomeComponent extends Component {
+class MyPageComponent extends Component {
     
     constructor(props) {
         super(props)
         this.retrieveWelcomeMessage = this.retrieveWelcomeMessage.bind(this)
         this.state = {
-            welcomeMessage : ''
+            welcomeMessage : '',
+            loggedInUser : AuthenticationService.getLoggedInUserEmail(),
+            info : ''
         }
         this.handleSuccessfulResponse = this.handleSuccessfulResponse.bind(this)
         this.handleError = this.handleError.bind(this)
     }
 
+    componentDidMount() {
+        InfoService.getStudentInfo(this.state.loggedInUser)
+        .then(response => {
+            console.log(response.data);
+            this.setState({info : response.data});
+        }).catch(error => {
+            console.log(error);
+        })
+    }
 
     retrieveWelcomeMessage() {
         
@@ -43,14 +55,29 @@ class WelcomeComponent extends Component {
 
     
     render() {
+        let userInfo = this.state.info;
         return (
-            <>
-                <h1>Welcome!</h1>
+            <div>
+                <h1>My Page</h1>
+                
                 <div className="container">
-                    Welcome {this.props.match.params.name}.
-                </div>
-                <div className="container">
-                    Check if axiosInterceptors is working well!<br></br>
+                    {
+                        userInfo && <div>
+                            <p>name : {userInfo.name}</p>
+                            <p>email : {userInfo.email}</p>
+                            <p>school : {userInfo.school}</p>
+                        </div>
+
+                    }
+                    {
+                        !userInfo && <div>
+                            Loading....
+                        </div>
+                    }
+                    
+                    
+                   
+                   
                     <button onClick={this.retrieveWelcomeMessage} 
                         className="btn btn-success">Get Message</button>
                 </div>
@@ -58,10 +85,10 @@ class WelcomeComponent extends Component {
                     {this.state.welcomeMessage}
                 </div>
                 
-            </>
+            </div>
         )        
     }
 }
 
 
-export default WelcomeComponent
+export default MyPageComponent;

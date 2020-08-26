@@ -16,8 +16,8 @@ node_modules
 ### IntelliJ IDEA ###
 .idea
 *.iws
-*.iml
 *.ipr
+*.iml
 
 ### NetBeans ###
 /nbproject/private/
