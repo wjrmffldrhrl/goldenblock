@@ -44,11 +44,11 @@ public class ResearchService {
         for ( Research research : researchEntities) {
             ResearchDto researchDto = ResearchDto.builder()
                     .id(research.getId())
-                    .researchTitle(research.getResearchTitle())
-                    .researchContent(research.getResearchContent())
+                    .title(research.getTitle())
+                    .content(research.getContent())
                     .prizeMoney(research.getPrizeMoney())
                     .deadLine(research.getDeadLine())
-                    .researchStatus(research.getResearchStatus())
+                    .status(research.getStatus())
                     .build();
 
             researchDtoList.add(researchDto);
@@ -64,11 +64,11 @@ public class ResearchService {
 
         ResearchDto researchDto = ResearchDto.builder()
                 .id(research.getId())
-                .researchTitle(research.getResearchTitle())
-                .researchContent(research.getResearchContent())
+                .title(research.getTitle())
+                .content(research.getContent())
                 .prizeMoney(research.getPrizeMoney())
                 .deadLine(research.getDeadLine())
-                .researchStatus(research.getResearchStatus())
+                .status(research.getStatus())
                 .build();
 
         return researchDto;
@@ -79,9 +79,9 @@ public class ResearchService {
     }
 
     @Transactional
-    public void participateResearch(String researchTitle, String email) {
+    public void participateResearch(Long id, String email) {
         Student student = studentRepository.findByEmail(email);
-        Research research = researchRepository.findTop1ByResearchTitle(researchTitle);
+        Research research = researchRepository.findById(id).get();
 
         researchMemberRepository.save(ResearchStudentMember.builder()
                 .addTime(LocalDate.now())

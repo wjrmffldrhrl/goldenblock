@@ -20,10 +20,18 @@ class ResearchListComponent extends React.Component {
         })
     }
 
+    // "id": 37,
+    // "title": "save",
+    // "content": "hi",
+    // "prizeMoney": "5000",
+    // "deadLine": "1995-03-27",
+    // "status": "ing",
+    // "companyName": null
+
     render() {
         let researches = this.state.researches;
         const listItem = researches.map((research) =>
-            <li>{research.title}</li>
+            <li key={research.id}><a href={'/research/' + research.id}>{research.title}</a></li>
         );
 
 
