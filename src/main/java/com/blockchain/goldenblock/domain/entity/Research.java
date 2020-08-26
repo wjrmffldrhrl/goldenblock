@@ -31,10 +31,10 @@ public class Research {
     }
 
     @Column(nullable = false)
-    private String researchTitle;
+    private String title;
 
     @Column(nullable = false, columnDefinition = "TEXT")
-    private String researchContent;
+    private String content;
 
     @Column(nullable = false)
     private String companyName;
@@ -46,7 +46,7 @@ public class Research {
     private LocalDate deadLine;
 
     @Column(nullable = false)
-    private String researchStatus;
+    private String status;
 
     @OneToMany(mappedBy = "research", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<ResearchStudentMember> researchStudentMembers = new ArrayList<>();

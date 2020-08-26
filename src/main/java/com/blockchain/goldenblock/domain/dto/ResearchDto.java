@@ -13,22 +13,22 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class ResearchDto {
     private Long id;
-    private String researchTitle;
-    private String researchContent;
+    private String title;
+    private String content;
     private String prizeMoney;
     private LocalDate deadLine;
-    private String researchStatus;
+    private String status;
     private String companyName;
 
 
     public Research toEntity() {
         Research research  = Research.builder()
                 .id(id)
-                .researchTitle(researchTitle)
-                .researchContent(researchContent)
+                .title(title)
+                .content(content)
                 .prizeMoney(prizeMoney)
                 .deadLine(deadLine)
-                .researchStatus(researchStatus)
+                .status(status)
                 .companyName(companyName)
                 .build();
 
