@@ -8,5 +8,4 @@ import java.util.Optional;
 
 public interface ResearchRepository extends JpaRepository<Research, Long> {
 
-    Optional<Research> findById(Long id);
 }

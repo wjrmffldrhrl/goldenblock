@@ -44,11 +44,11 @@ public class ResearchService {
         for ( Research research : researchEntities) {
             ResearchDto researchDto = ResearchDto.builder()
                     .id(research.getId())
-                    .researchTitle(research.getResearchTitle())
-                    .researchContent(research.getResearchContent())
+                    .title(research.getTitle())
+                    .content(research.getContent())
                     .prizeMoney(research.getPrizeMoney())
                     .deadLine(research.getDeadLine())
-                    .researchStatus(research.getResearchStatus())
+                    .status(research.getStatus())
                     .build();
 
             researchDtoList.add(researchDto);
@@ -64,11 +64,11 @@ public class ResearchService {
 
         ResearchDto researchDto = ResearchDto.builder()
                 .id(research.getId())
-                .researchTitle(research.getResearchTitle())
-                .researchContent(research.getResearchContent())
+                .title(research.getTitle())
+                .content(research.getContent())
                 .prizeMoney(research.getPrizeMoney())
                 .deadLine(research.getDeadLine())
-                .researchStatus(research.getResearchStatus())
+                .status(research.getStatus())
                 .build();
 
         return researchDto;
