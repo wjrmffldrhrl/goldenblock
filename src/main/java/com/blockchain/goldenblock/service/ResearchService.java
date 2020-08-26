@@ -43,6 +43,7 @@ public class ResearchService {
 
         for ( Research research : researchEntities) {
             ResearchDto researchDto = ResearchDto.builder()
+                    .id(research.getId())
                     .researchTitle(research.getResearchTitle())
                     .researchContent(research.getResearchContent())
                     .prizeMoney(research.getPrizeMoney())
@@ -62,6 +63,7 @@ public class ResearchService {
         Research research = researchEntityWrapper.get();
 
         ResearchDto researchDto = ResearchDto.builder()
+                .id(research.getId())
                 .researchTitle(research.getResearchTitle())
                 .researchContent(research.getResearchContent())
                 .prizeMoney(research.getPrizeMoney())

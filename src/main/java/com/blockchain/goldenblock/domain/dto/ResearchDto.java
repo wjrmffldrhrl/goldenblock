@@ -8,8 +8,11 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class ResearchDto {
+    private Long id;
     private String researchTitle;
     private String researchContent;
     private String prizeMoney;
@@ -20,6 +23,7 @@ public class ResearchDto {
 
     public Research toEntity() {
         Research research  = Research.builder()
+                .id(id)
                 .researchTitle(researchTitle)
                 .researchContent(researchContent)
                 .prizeMoney(prizeMoney)
@@ -29,16 +33,6 @@ public class ResearchDto {
                 .build();
 
         return research;
-    }
-    @Builder
-    public ResearchDto(String researchTitle, String researchContent, String prizeMoney, LocalDate deadLine, String researchStatus, String companyName) {
-        this.researchTitle = researchTitle;
-        this.researchContent = researchContent;
-        this.prizeMoney = prizeMoney;
-        this.deadLine = deadLine;
-        this.researchStatus = researchStatus;
-        this.companyName = companyName;
-
     }
 
 }
