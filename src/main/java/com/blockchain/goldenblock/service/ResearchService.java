@@ -79,9 +79,9 @@ public class ResearchService {
     }
 
     @Transactional
-    public void participateResearch(String researchTitle, String email) {
+    public void participateResearch(Long id, String email) {
         Student student = studentRepository.findByEmail(email);
-        Research research = researchRepository.findTop1ByResearchTitle(researchTitle);
+        Research research = researchRepository.findById(id).get();
 
         researchMemberRepository.save(ResearchStudentMember.builder()
                 .addTime(LocalDate.now())

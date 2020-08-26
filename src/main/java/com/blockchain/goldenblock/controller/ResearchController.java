@@ -41,9 +41,9 @@ public class ResearchController {
     }
 
     @PostMapping("/participation")
-    public void participateResearch(@RequestBody ResearchDto researchDto,
+    public void participateResearch(@RequestParam Long researchId,
                                     Principal studentDto){
-        researchService.participateResearch(researchDto.getResearchTitle(), studentDto.getName());
+        researchService.participateResearch(researchId, studentDto.getName());
 
     }
 
