@@ -31,7 +31,7 @@ class ResearchListComponent extends React.Component {
     render() {
         let researches = this.state.researches;
         const listItem = researches.map((research) =>
-            <li><a>{research.title}</a></li>
+            <li key={research.id}><a href={'/research/' + research.id}>{research.title}</a></li>
         );
 
 

@@ -7,7 +7,7 @@ class ResearchService {
         return axios.get('/research');
     }
 
-    getResearchDetail(id) {
+    getResearchDetails(id) {
         AuthenticationService.setupAxiosInterceptors();
         return axios.get('/research/' + id);
     }
