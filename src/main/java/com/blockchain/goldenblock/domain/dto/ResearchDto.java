@@ -8,7 +8,9 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class ResearchDto {
     private String researchTitle;
     private String researchContent;
@@ -29,16 +31,6 @@ public class ResearchDto {
                 .build();
 
         return research;
-    }
-    @Builder
-    public ResearchDto(String researchTitle, String researchContent, String prizeMoney, LocalDate deadLine, String researchStatus, String companyName) {
-        this.researchTitle = researchTitle;
-        this.researchContent = researchContent;
-        this.prizeMoney = prizeMoney;
-        this.deadLine = deadLine;
-        this.researchStatus = researchStatus;
-        this.companyName = companyName;
-
     }
 
 }
