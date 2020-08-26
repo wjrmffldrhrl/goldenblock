@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResearchDto {
+    private Long id;
     private String researchTitle;
     private String researchContent;
     private String prizeMoney;
@@ -22,6 +23,7 @@ public class ResearchDto {
 
     public Research toEntity() {
         Research research  = Research.builder()
+                .id(id)
                 .researchTitle(researchTitle)
                 .researchContent(researchContent)
                 .prizeMoney(prizeMoney)
