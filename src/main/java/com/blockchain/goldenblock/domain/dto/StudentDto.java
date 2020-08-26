@@ -14,7 +14,6 @@ public class StudentDto {
     private String school;
     private String email;
     private String password;
-
     
     public Student toEntity() {
         Student student = Student.builder()
