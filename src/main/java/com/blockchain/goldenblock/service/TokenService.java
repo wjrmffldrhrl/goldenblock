@@ -11,7 +11,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import com.blockchain.goldenblock.domain.entity.Enterprise;
 import com.blockchain.goldenblock.domain.entity.Student;
+import com.blockchain.goldenblock.domain.repository.EnterpriseRepository;
 import com.blockchain.goldenblock.domain.repository.StudentRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +48,8 @@ import org.web3j.protocol.http.HttpService;
 public class TokenService {
 
     @Autowired
-    private StudentRepository userInfoRepository;
+    private StudentRepository studentInfoRepository;
+    private EnterpriseRepository enterpriseInfoRepository;
 
     // Token contract address
 
@@ -147,6 +150,66 @@ public class TokenService {
         return decode.get(0).getValue().toString();
 
     }
+
+    public boolean mint(String email, String amount) {
+
+        Enterprise targetEnter = enterpriseInfoRepository.findByEmail(email); 
+        BigInteger amount_ = new BigInteger(amount);
+
+        if (targetEnter == null) {
+            System.out.println("user [" + email + "] didn't exist");
+            return false;
+        }
+
+        String address = targetEnter.getPublicKey(); //기업에도 publicKey를 추가해야 한다.
+        System.out.println("user address: " + address);
+
+        List<Type> inputParameters = new ArrayList<>();
+        inputParameters.add(new Address(address));
+        inputParameters.add(new Address(amount_));
+
+        transactionFunction("mint", inputParameters, Collections.emptyList());
+
+        return true;
+
+    }
+
+
+    public boolean sendToken(String from, String to, String amount) {
+
+        BigInteger amount_ = new BigInteger(amount);
+
+        List<Type> inputParameters = new ArrayList<>();
+        inputParameters.add(new Address(from));
+        inputParameters.add(new Address(to));
+        inputParameters.add(new Address(amount_));
+
+        transactionFunction("sendToken", inputParameters, Collections.emptyList());
+
+        return true;
+    }
+
+    public boolean burn(String from, String amount) {
+        Enterprise fromEnter = enterpriseInfoRepository.findByEmail(from);
+
+        BigInteger amount_ = new BigInteger(amount);
+
+        if(fromEnter == null) {
+            System.out.println("user didn't exist");
+            return false;
+        }
+
+        String fromEnterAddress = fromEnter.getPublicKey();
+
+        List<Type> inputParameters = new ArrayList<>();
+        inputParameters.add(new Address(fromEnterAddress));
+        inputParameters.add(new Uint256(amount_));
+
+        transactionFunction("burn", inputParameters, Collections.emptyList());
+
+        return true;
+    }
+    
 
 
 }
