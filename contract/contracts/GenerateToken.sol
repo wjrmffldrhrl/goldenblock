@@ -1,8 +1,9 @@
 pragma solidity <0.8.0;
 
 import "../node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 
-contract GenerateToken is ERC20 {
+contract GenerateToken is ERC20, Ownable {
     
     constructor() public ERC20("Golden", "GLD") {
         _mint(msg.sender, 10000);

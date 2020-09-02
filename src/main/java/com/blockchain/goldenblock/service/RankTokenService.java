@@ -43,14 +43,14 @@ import org.web3j.protocol.http.HttpService;
 
 @Service
 @Transactional
-public class TokenService {
+public class RankTokenService {
 
     @Autowired
     private StudentRepository userInfoRepository;
 
     // Token contract address
 
-    private String goldenTokenAddress = "0x412bFC8ac9e23d2F662a9cb79eD91F5e9EeB7581";
+    private String rankTokenAddress = "0xB1C7557c784998Aa3045D5E9aD50D64a91bb7dD5";
 
     private String networkAddress = "HTTP://127.0.0.1:7545";
 
@@ -60,7 +60,7 @@ public class TokenService {
     List<String> addressList;
 
     // Connect blockchain server with web3j
-    public TokenService() throws Exception {
+    public RankTokenService() throws Exception {
         web3j = Web3j.build(new HttpService(networkAddress));
         admin = Admin.build(new HttpService(networkAddress));
 
@@ -79,7 +79,7 @@ public class TokenService {
         System.out.println("function : " + function);
 
         // send transaction from address[0] to contract
-        Transaction transaction = Transaction.createEthCallTransaction(addressList.get(0), goldenTokenAddress,
+        Transaction transaction = Transaction.createEthCallTransaction(addressList.get(0), rankTokenAddress,
                 FunctionEncoder.encode(function));
 
         EthCall ethCall = web3j.ethCall(transaction, DefaultBlockParameterName.LATEST).send();
@@ -117,7 +117,7 @@ public class TokenService {
 
         // Create Transaction with nonce
         Transaction transaction = Transaction.createFunctionCallTransaction(addressList.get(0), nonce,
-                Transaction.DEFAULT_GAS, null, goldenTokenAddress, FunctionEncoder.encode(function));
+                Transaction.DEFAULT_GAS, null, rankTokenAddress, FunctionEncoder.encode(function));
 
 
         try {

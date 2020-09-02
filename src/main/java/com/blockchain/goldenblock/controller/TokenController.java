@@ -22,47 +22,5 @@ public class TokenController {
     public String token() throws Exception {
         return tokenService.totalSupply();
     }
-
-    @GetMapping("/balance/{email}")
-    public String getBalance(@PathVariable String email) throws Exception {
-
-        return tokenService.getBalance(email);
-    }
-
-    @GetMapping("/charge/{email}/{amount}")
-    public String chargeToken(@PathVariable String email, 
-        @PathVariable String amount) throws IOException {
-
-        boolean result = tokenService.chargeToken(email, amount);
-
-        if(!result)
-            return "didn't work";
-
-        return "done";
-    }
-
-    @GetMapping("/send/{from}/{to}/{amount}")
-    public String sendToken(@PathVariable String from, 
-        @PathVariable String to, @PathVariable String amount){
-
-        boolean result = tokenService.sendToken(from, to, amount);
-
-        if(!result)
-            return "didn't work";
-
-        return "done";
-    }
-
-    @GetMapping("/use/{email}/{amount}")
-    public String useToken(@PathVariable String email,
-        @PathVariable String amount){
-
-        boolean result = tokenService.burnToken(email, amount);
-
-        if(!result)
-            return "didn't work";
-
-        return "done";
-    }
-    
+   
 }
