@@ -48,13 +48,13 @@ import org.web3j.protocol.http.HttpService;
 public class RankTokenService {
 
     @Autowired
-    private StudentRepository userInfoRepository;
+    private StudentRepository studentInfoRepository;
     @Autowired
     private EnterpriseRepository enterpriseInfoRepository;
 
     // Token contract address
 
-    private String rankTokenAddress = "0xB1C7557c784998Aa3045D5E9aD50D64a91bb7dD5";
+    private String rankTokenAddress = "0x182627D374100533e4CFcd2E0eCae5f1494208b5";
 
     private String networkAddress = "HTTP://ec2-18-191-91-102.us-east-2.compute.amazonaws.com:8545";
 
@@ -211,5 +211,24 @@ public class RankTokenService {
         return true;
     }
 
+    public String balanceOf(String email) throws Exception {
+
+        String balance;
+        Student targetStudent = studentInfoRepository.findByEmail(email);
+
+        if(targetStudent == null) {
+            return "user + [" + email + "] didn't exist";
+        }
+
+        String address = targetStudent.getPublicKey();
+
+        List<Type> decode = viewFunction("balanceOf",  Arrays.asList(new Address(address)), 
+                    Arrays.asList(new TypeReference<Uint256>() {
+                    }));
+        balance = decode.get(0).getValue().toString();
+
+        return balance;
+
+    }
 
 }

@@ -35,5 +35,10 @@ public class RankTokenController {
     public boolean tokenBurn(String from, String amount) {
         return rankTokenService.burn(from, amount);
     }
+
+    @GetMapping("/rt-balance")
+    public String tokenBalance(String email) throws Exception {
+        return rankTokenService.balanceOf(email);
+    }
    
 }
