@@ -37,8 +37,8 @@ public class RankTokenController {
     }
 
     @GetMapping("/rt-balance")
-    public String tokenBalance() throws Exception {
-        return rankTokenService.balanceOf();
+    public String tokenBalance(String email) throws Exception {
+        return rankTokenService.balanceOf(email);
     }
    
 }
