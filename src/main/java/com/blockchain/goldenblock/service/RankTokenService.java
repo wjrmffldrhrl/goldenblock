@@ -49,13 +49,14 @@ public class RankTokenService {
 
     @Autowired
     private StudentRepository userInfoRepository;
+    @Autowired
     private EnterpriseRepository enterpriseInfoRepository;
 
     // Token contract address
 
     private String rankTokenAddress = "0xB1C7557c784998Aa3045D5E9aD50D64a91bb7dD5";
 
-    private String networkAddress = "HTTP://127.0.0.1:7545";
+    private String networkAddress = "HTTP://ec2-18-191-91-102.us-east-2.compute.amazonaws.com:8545";
 
     private Web3j web3j;
 

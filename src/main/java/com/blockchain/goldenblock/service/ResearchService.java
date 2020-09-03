@@ -12,6 +12,7 @@ import com.blockchain.goldenblock.domain.repository.ResearchMemberRepository;
 import com.blockchain.goldenblock.domain.repository.ResearchRepository;
 import com.blockchain.goldenblock.domain.repository.StudentRepository;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Service
 public class ResearchService {
     private final ResearchRepository researchRepository;
