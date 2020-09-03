@@ -210,7 +210,17 @@ public class GoldenTokenService {
 
         return true;
     }
-    
+
+    public String createAccount(String password) throws InvalidAlgorithmParameterException, NoSuchAlgorithmException,
+            NoSuchProviderException, CipherException {
+
+        ECKeyPair keyPair = Keys.createEcKeyPair();
+
+        WalletFile wallet = Wallet.createStandard(password, keyPair);
+
+        return "0x" + wallet.getAddress();
+    }
+
 
 
 }
