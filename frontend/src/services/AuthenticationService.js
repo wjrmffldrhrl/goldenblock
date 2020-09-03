@@ -87,11 +87,21 @@ class AuthenticationService {
 
 
     executeStudentRegister(email, password, name, school) {
-        return axios.post('/register/student', {
+        return axios.post('/student', {
             email,
             password,
             name,
             school
+        });
+    }
+
+    executeEnterpriseRegister(email, password, name,  ph, companyNumber) {
+        return axios.post('/enterprise', {
+            email,
+            password,
+            name,
+            ph,
+            companyNumber
         });
     }
 

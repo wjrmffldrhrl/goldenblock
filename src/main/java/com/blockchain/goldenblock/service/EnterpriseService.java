@@ -20,13 +20,14 @@ import java.security.NoSuchProviderException;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class EnterpriseService {
     private final EnterpriseRepository enterpriseRepository;
     private final StudentRepository studentRepository;
     private final PasswordEncoder passwordEncoder;
     private final GoldenTokenService goldenTokenService;
 
-    @Transactional
+
     public Long saveEnterprise(EnterpriseDto enterpriseDto) {
         boolean isExistStudent = studentRepository.existsByEmail(enterpriseDto.getEmail());
         boolean isExistEnterprise = enterpriseRepository.existsByEmail(enterpriseDto.getEmail());
@@ -58,5 +59,9 @@ public class EnterpriseService {
                 .companyNumber(enterpriseDto.getCompanyNumber())
                 .password(enterpriseDto.getPassword())
                 .publicKey(publicKey).build()).getId();
+    }
+
+    public Enterprise getEnterprise(String email) {
+        return enterpriseRepository.findByEmail(email);
     }
 }
