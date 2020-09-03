@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import AuthenticationService from '../../services/AuthenticationService';
 import InfoService from '../../services/InfoService';
+import { Link } from 'react-router-dom';
 
 class MyPageComponent extends Component {
     
@@ -72,6 +73,7 @@ class MyPageComponent extends Component {
                     }
                     {
                         info && info.userRole === 'enterprise' && <div>
+                            <Link  to="/research-create">Create Research</Link>
                             <p>name : {info.name}</p>
                             <p>email : {info.email}</p>
                             <p>ph : {info.ph}</p>

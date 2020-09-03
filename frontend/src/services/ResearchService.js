@@ -11,6 +11,21 @@ class ResearchService {
         AuthenticationService.setupAxiosInterceptors();
         return axios.get('/research/' + id);
     }
+
+    executeResearchRegister(title, content, deadLine, prizeMoney) {
+        AuthenticationService.setupAxiosInterceptors();
+        return axios.post('/research', {
+            title, content, deadLine, prizeMoney
+            }
+        )
+    }
+    
+    executeSubmit(researchId, fileName, data) {
+        AuthenticationService.setupAxiosInterceptors();
+        return axios.post('/fileupload', {
+            researchId, fileName, data
+        });
+    }
 }
 
 export default new ResearchService();

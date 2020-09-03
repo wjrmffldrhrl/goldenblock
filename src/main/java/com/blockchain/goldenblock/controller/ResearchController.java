@@ -2,6 +2,7 @@ package com.blockchain.goldenblock.controller;
 
 import com.blockchain.goldenblock.domain.dto.ResearchDto;
 
+import com.blockchain.goldenblock.domain.dto.ResearchRegisterForm;
 import com.blockchain.goldenblock.service.ResearchService;
 import lombok.AllArgsConstructor;
 
@@ -25,8 +26,12 @@ public class ResearchController {
     }
 
     @PostMapping("/research")
-    public void postResearch(@RequestBody ResearchDto researchDto, Principal enterpriseDto){
-        researchService.saveResearch(researchDto, enterpriseDto.getName());
+    public long postResearch(@RequestBody ResearchRegisterForm researchRegisterForm, Principal currentUser){
+
+        System.out.println("research controller");
+        System.out.println(researchRegisterForm.toString());
+        return researchService.saveResearch(researchRegisterForm, currentUser.getName());
+
     }
 
     @GetMapping("/research/{no}")

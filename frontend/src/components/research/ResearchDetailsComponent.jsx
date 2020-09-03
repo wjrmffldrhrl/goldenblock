@@ -1,5 +1,6 @@
 import React from 'react';
 import ResearchService from '../../services/ResearchService';
+import { Link } from 'react-router-dom';
 
 class ResearchDetailsComponent extends React.Component {
 
@@ -37,6 +38,9 @@ class ResearchDetailsComponent extends React.Component {
                  <h2>{research.id}</h2>
                  <p>{research.content}</p>
                  <p>Deadline : {research.deadLine}</p>
+
+
+                 <Link  to={"/submit/" + research.id}>Submit</Link>
              </div>
         );
     }
