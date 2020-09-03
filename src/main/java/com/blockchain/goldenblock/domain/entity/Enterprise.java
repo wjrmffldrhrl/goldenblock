@@ -30,7 +30,7 @@ public class Enterprise {
     @Column(length = 30, nullable = false)
     private String companyNumber;
 
-    @Column(length = 50, nullable = false)
+    @Column(nullable = false)
     private String password;
 
     private String publicKey;

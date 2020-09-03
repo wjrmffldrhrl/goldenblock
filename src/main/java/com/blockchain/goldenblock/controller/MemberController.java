@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin
 @RequiredArgsConstructor
-@RequestMapping("/register/*")
 public class MemberController {
     private final StudentService studentService;
     private final EnterpriseService enterpriseService;
@@ -24,6 +23,8 @@ public class MemberController {
 
     @PostMapping("/enterprise")
     public void saveEnterprise(@RequestBody EnterpriseDto enterpriseDto) {
+
+
         enterpriseService.saveEnterprise(enterpriseDto); // db에 저장
     }
 

@@ -55,22 +55,32 @@ class MyPageComponent extends Component {
 
     
     render() {
-        let userInfo = this.state.info;
+        let info = this.state.info;
         return (
             <div>
                 <h1>My Page</h1>
                 
                 <div className="container">
                     {
-                        userInfo && <div>
-                            <p>name : {userInfo.name}</p>
-                            <p>email : {userInfo.email}</p>
-                            <p>school : {userInfo.school}</p>
+                        info && info.userRole === 'student' && <div>
+                            <p>name : {info.name}</p>
+                            <p>email : {info.email}</p>
+                            <p>school : {info.school}</p>
+                            <p>rank : {info.rank}</p>
                         </div>
 
                     }
                     {
-                        !userInfo && <div>
+                        info && info.userRole === 'enterprise' && <div>
+                            <p>name : {info.name}</p>
+                            <p>email : {info.email}</p>
+                            <p>ph : {info.ph}</p>
+                            <p>company number : {info.companyNumber}</p>
+                        </div>
+
+                    }
+                    {
+                        !info && <div>
                             Loading....
                         </div>
                     }
