@@ -5,6 +5,7 @@ import com.blockchain.goldenblock.domain.dto.ResearchDto;
 import com.blockchain.goldenblock.service.ResearchService;
 import lombok.AllArgsConstructor;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,9 +14,9 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ResearchController {
-    private ResearchService researchService;
+    private final ResearchService researchService;
 
     @GetMapping("/research")
     public List<ResearchDto> list() {

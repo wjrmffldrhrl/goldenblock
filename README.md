@@ -1,3 +1,4 @@
+![icon](https://github.com/wjrmffldrhrl/goldenblock/blob/master/box.svg)
 # Golden Block
 
 ## 배경

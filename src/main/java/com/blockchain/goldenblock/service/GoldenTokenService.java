@@ -45,17 +45,18 @@ import org.web3j.protocol.http.HttpService;
 
 @Service
 @Transactional
-public class TokenService {
+public class GoldenTokenService {
 
     @Autowired
     private StudentRepository studentInfoRepository;
+    @Autowired
     private EnterpriseRepository enterpriseInfoRepository;
 
     // Token contract address
 
     private String goldenTokenAddress = "0x6cDBE6041E5989964CA5870C46AC72B2086887F0";
 
-    private String networkAddress = "ec2-18-191-91-102.us-east-2.compute.amazonaws.com";
+    private String networkAddress = "HTTP://ec2-18-191-91-102.us-east-2.compute.amazonaws.com:8545";
 
     private Web3j web3j;
 
@@ -63,7 +64,7 @@ public class TokenService {
     List<String> addressList;
 
     // Connect blockchain server with web3j
-    public TokenService() throws Exception {
+    public GoldenTokenService() throws Exception {
         web3j = Web3j.build(new HttpService(networkAddress));
         admin = Admin.build(new HttpService(networkAddress));
 
@@ -209,7 +210,17 @@ public class TokenService {
 
         return true;
     }
-    
+
+    public String createAccount(String password) throws InvalidAlgorithmParameterException, NoSuchAlgorithmException,
+            NoSuchProviderException, CipherException {
+
+        ECKeyPair keyPair = Keys.createEcKeyPair();
+
+        WalletFile wallet = Wallet.createStandard(password, keyPair);
+
+        return "0x" + wallet.getAddress();
+    }
+
 
 
 }

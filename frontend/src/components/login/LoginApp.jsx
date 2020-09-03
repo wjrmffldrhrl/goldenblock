@@ -1,20 +1,25 @@
+
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import AuthenticatedRoute from '../../config/AuthenticatedRoute.jsx';
-import LoginComponent from './LoginComponent.jsx';
-import ErrorComponent from '../error/Error.jsx';
-import HeaderComponent from '../HeaderComponent.jsx';
-import FooterComponent from '../FooterComponent.jsx';
-import LogoutComponent from './LogoutComponent.jsx';
+
 import MyPageComponent from './MyPageComponent.jsx';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import AuthenticationService from '../../services/AuthenticationService';
 import MainComponent from './MainComponent.jsx';
 import { withRouter } from 'react-router';
 import RegisterForm from './RegisterForm';
 import ResearchListComponent from '../research/ResearchListComponent';
 import ResearchDetailsComponent from '../research/ResearchDetailsComponent';
+import LogoutComponent from '../../components/login/LoginComponent';
+import AuthenticatedRoute from '../../config/AuthenticatedRoute';
+import ErrorComponent from '../error/Error';
+import HeaderComponent from '../HeaderComponent';
+import LoginComponent from '../../components/login/LoginComponent';
+import FooterComponent from '../FooterComponent';
+
 
 class LoginApp extends Component {
+    
 
     constructor(props) {
         super(props);
