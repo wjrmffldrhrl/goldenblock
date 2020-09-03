@@ -4,7 +4,12 @@ import AuthenticationService from './AuthenticationService';
 class ResearchService {
     getResearchList() {
         AuthenticationService.setupAxiosInterceptors();
-        return axios.get('https://jsonplaceholder.typicode.com/posts');
+        return axios.get('/research');
+    }
+
+    getResearchDetails(id) {
+        AuthenticationService.setupAxiosInterceptors();
+        return axios.get('/research/' + id);
     }
 }
 

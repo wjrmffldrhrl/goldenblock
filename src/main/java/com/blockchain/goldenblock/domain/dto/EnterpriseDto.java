@@ -5,9 +5,10 @@ import lombok.*;
 
 @Getter
 @Setter
+@Builder
 @ToString
 @NoArgsConstructor
-
+@AllArgsConstructor
 public class EnterpriseDto {
     private String name;
     private String ph;
@@ -26,16 +27,5 @@ public class EnterpriseDto {
                 .build();
 
         return enterprise;
-    }
-    @Builder
-    public EnterpriseDto(String name, String ph, String email, String companyNumber, String password) {
-
-        this.name = name;
-        this.ph = ph;
-        this.email = email;
-        this.companyNumber = companyNumber;
-        this.password = password;
-
-
     }
 }

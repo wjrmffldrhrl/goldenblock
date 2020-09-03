@@ -9,22 +9,16 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudentDto {
-    private String name;
-    private String school;
+public class RankingDto {
     private String email;
-    private String password;
-    private String rank;
-    
-    public Student toEntity() {
-        Student student = Student.builder()
-                .name(name)
-                .school(school)
-                .email(email)
-                .password(password)
-                .rank(rank)
-                .build();
-        return student;
-    }
+    private String name;
 
+    public Student toEntity() {
+        Student studentRanking = Student.builder()
+                .name(name)
+                .email(email)
+                .build();
+
+        return studentRanking;
+    }
 }

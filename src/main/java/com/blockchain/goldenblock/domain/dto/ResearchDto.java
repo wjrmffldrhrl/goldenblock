@@ -2,40 +2,37 @@ package com.blockchain.goldenblock.domain.dto;
 
 import com.blockchain.goldenblock.domain.entity.Research;
 import lombok.*;
+import java.time.LocalDate;
 
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @ToString
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class ResearchDto {
-    private String researchTitle;
-    private String researchContent;
+    private Long id;
+    private String title;
+    private String content;
     private String prizeMoney;
-    private LocalDateTime deadLine;
-    private String researchStatus;
+    private LocalDate deadLine;
+    private String status;
+    private String companyName;
 
 
     public Research toEntity() {
         Research research  = Research.builder()
-                .researchTitle(researchTitle)
-                .researchContent(researchContent)
+                .id(id)
+                .title(title)
+                .content(content)
                 .prizeMoney(prizeMoney)
                 .deadLine(deadLine)
-                .researchStatus(researchStatus)
+                .status(status)
+                .companyName(companyName)
                 .build();
 
         return research;
-    }
-    @Builder
-    public ResearchDto(String researchTitle, String researchContent, String prizeMoney, LocalDateTime deadLine, String researchStatus) {
-        this.researchTitle = researchTitle;
-        this.researchContent = researchContent;
-        this.prizeMoney = prizeMoney;
-        this.deadLine = deadLine;
-        this.researchStatus = researchStatus;
-
     }
 
 }
