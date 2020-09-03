@@ -1,12 +1,8 @@
-import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import AuthenticatedRoute from '../../config/AuthenticatedRoute.jsx';
-import LoginComponent from './LoginComponent.jsx';
-import ErrorComponent from '../error/Error.jsx';
-import HeaderComponent from '../HeaderComponent.jsx';
-import FooterComponent from '../FooterComponent.jsx';
-import LogoutComponent from './LogoutComponent.jsx';
+
+import React, {Component} from 'react'
+
 import MyPageComponent from './MyPageComponent.jsx';
+
 import AuthenticationService from '../../services/AuthenticationService';
 import MainComponent from './MainComponent.jsx';
 import { withRouter } from 'react-router';
