@@ -16,7 +16,8 @@ import ErrorComponent from '../error/Error';
 import HeaderComponent from '../HeaderComponent';
 import LoginComponent from '../../components/login/LoginComponent';
 import FooterComponent from '../FooterComponent';
-
+import ResearchCreateComponent from '../research/ResearchCreateComponent';
+import ResearchSubmitComponent from '../research/ResearchSubmitComponent';
 
 class LoginApp extends Component {
     
@@ -54,6 +55,8 @@ class LoginApp extends Component {
                             <AuthenticatedRoute path="/logout" component={LogoutComponent}/>
                             <AuthenticatedRoute path="/researches" component={ResearchListComponent}/>
                             <AuthenticatedRoute path="/research/:id" component={ResearchDetailsComponent}/>
+                            <AuthenticatedRoute path="/research-create" component={ResearchCreateComponent}/>
+                            <AuthenticatedRoute path="/submit/:id" component={ResearchSubmitComponent}/>
                             <Route component={ErrorComponent}/>
                         </Switch>
                         <FooterComponent/>

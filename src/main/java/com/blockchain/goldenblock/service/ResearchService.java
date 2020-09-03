@@ -2,6 +2,7 @@ package com.blockchain.goldenblock.service;
 
 import com.blockchain.goldenblock.domain.dto.EnterpriseDto;
 import com.blockchain.goldenblock.domain.dto.ResearchDto;
+import com.blockchain.goldenblock.domain.dto.ResearchRegisterForm;
 import com.blockchain.goldenblock.domain.dto.StudentDto;
 import com.blockchain.goldenblock.domain.entity.Enterprise;
 import com.blockchain.goldenblock.domain.entity.Research;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.transaction.Transactional;
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,10 +34,16 @@ public class ResearchService {
     private final ResearchMemberRepository researchMemberRepository;
 
     @Transactional
-    public Long saveResearch(ResearchDto researchDto, String email) {
+    public Long saveResearch(ResearchRegisterForm researchRegisterForm, String email) {
         Enterprise enterprise = enterpriseRepository.findByEmail(email);
-        researchDto.setCompanyName(enterprise.getName());
-        return researchRepository.save(researchDto.toEntity()).getId();
+
+        return researchRepository.save(Research.builder()
+                .title(researchRegisterForm.getTitle())
+                .content(researchRegisterForm.getContent())
+                .companyName(enterprise.getName())
+                .prizeMoney(researchRegisterForm.getPrizeMoney())
+                .deadLine(LocalDate.parse(researchRegisterForm.getDeadLine()))
+                .status("ing").build()).getId();
     }
     @Transactional
     public List<ResearchDto> getResearchList() {

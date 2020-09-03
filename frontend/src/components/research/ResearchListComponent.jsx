@@ -1,5 +1,6 @@
 import React from 'react';
 import ResearchService from '../../services/ResearchService';
+
 class ResearchListComponent extends React.Component {
 
     constructor(props) {
@@ -38,6 +39,7 @@ class ResearchListComponent extends React.Component {
         return(
             <div>
                 <h1>Research List</h1>
+                
                 <ul>{listItem}</ul>
                 
             </div>
