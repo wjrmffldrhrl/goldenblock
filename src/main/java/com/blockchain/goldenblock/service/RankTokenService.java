@@ -54,9 +54,9 @@ public class RankTokenService {
 
     // Token contract address
 
-    private String rankTokenAddress = "0x182627D374100533e4CFcd2E0eCae5f1494208b5";
+    private String rankTokenAddress = "0xBE9d7E2d6AdB1538dD5Dd63E7217CE3e3453984A";
 
-    private String networkAddress = "HTTP://ec2-18-191-91-102.us-east-2.compute.amazonaws.com:8545";
+    private String networkAddress = "HTTP://ec2-3-15-20-109.us-east-2.compute.amazonaws.com:8545";
 
     private Web3j web3j;
 

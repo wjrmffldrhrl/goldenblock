@@ -54,9 +54,9 @@ public class GoldenTokenService {
 
     // Token contract address
 
-    private String goldenTokenAddress = "0x6cDBE6041E5989964CA5870C46AC72B2086887F0";
+    private String goldenTokenAddress = "0xC37e6cff1F773B888B67097Eb46D45B5C02b2C04";
 
-    private String networkAddress = "HTTP://ec2-18-191-91-102.us-east-2.compute.amazonaws.com:8545";
+    private String networkAddress = "HTTP://ec2-3-15-20-109.us-east-2.compute.amazonaws.com:8545";
 
     private Web3j web3j;
 
