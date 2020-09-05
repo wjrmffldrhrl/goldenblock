@@ -16,6 +16,9 @@ public class FileUploadController {
 
     @PostMapping("/fileupload")
     public void postFile(@RequestBody FileUploadDto fileUploadDto){
+
+        System.out.println(fileUploadDto.getFileName());
+
         fileUploadService.saveFile(fileUploadDto);
     }
 }
